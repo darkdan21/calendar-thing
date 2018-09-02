@@ -6,6 +6,8 @@ class fileyaml:
         file_object = open(yamlfile,"r")
         stryaml = yaml.load(file_object.read())
         self.yaml = stryaml 
+        if self.yaml is None:
+            self.yaml = {}
         file_object.close()
 
     def getattr(self,attr):
@@ -15,8 +17,8 @@ class fileyaml:
         return self.yaml
 
     def setattr(self,attr,value):
-        self.yaml.attr = value
-        file_data = yaml.dump(data)
+        self.yaml[attr] = value
+        file_data = yaml.dump(self.yaml)
         file_object = open(self.yamlfile,"w")
         file_object.write(file_data)
         file_object.close()
