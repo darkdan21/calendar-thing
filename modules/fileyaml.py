@@ -11,6 +11,9 @@ class fileyaml:
     def getattr(self,attr):
         return self.yaml.attr;
 
+    def listattr(self):
+        return self.yaml
+
     def setattr(self,attr,value):
         self.yaml.attr = value
         file_data = yaml.dump(data)
